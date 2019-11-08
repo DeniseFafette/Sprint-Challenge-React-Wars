@@ -26,13 +26,73 @@ Demonstrate your understanding of this Sprint's concepts by answering the follow
 
 - [ ] What is React JS and what problems does it try and solve? Support your answer with concepts introduced in class and from your personal research on the web.
 
+React JS is a JavaScript library. provide developers with the ability to build large scale applications effectively.
+
+The core philosophy of React development revolves around creating small, reusable building blocks—components—which can ultimately be pieced together to form entire websites  Companies like Netflix, Walmart, Dropbox, Tesla, Airbnb, and many, many others use React. This wide adoption is due to React’s component-based architecture: It allows large organizations to work nimbly, introducing components as needed without completely rewriting their entire codebase.
+
+Additionally, the introduction of React Native—a sister framework that enables cross-platform mobile app development in React-flavored JavaScript—enables development teams familiar with React on the web to easily build mobile apps as well. This means developers can work across a suite of digital products that run on different platforms but share the same codebase and the same components.
+
+That shared understanding (and code!) across products creates efficiencies and flexibility you don’t have on a development team that has to be able to write and maintain native Android code, native iOS code, and code for the web.- Postlight.com
+
+Because we have such rich user interfaces today that interact with ever-changing data, users interacting with DOM elements, and lots of animations and events firing, the DOM is doing a lot of work. We need a way to offload a lot of the state (data) that our apps need to use, from the DOM. To keep up with today’s demands of the web, we need a way to build applications that can take care of that workload.
+
+Working with the DOM API is actually really hard. The React built a simple engine called the virtual DOM that interacts with the actual DOM for us. 
+
+We simply tell the virtual DOM which elements and state (data) to render to the actual DOM, and it will do so. Beyond that, it will “react” when the state (data) in our app changes, and will update the DOM accordingly. All on its own!
+In a process called “reconciliation”, React will detect that the state of the app has changed. Then it will update the virtual DOM, taking note of which nodes have changed due to the state changes. Finally, once it knows which nodes have changed, it will update only those specific nodes on the actual DOM. This takes a lot of pressure off of our browsers and it’s why React is as powerful as it is.
+
+React solves the problem of providing a smooth experience for our users, as well as those developing applications.
+
+
 - [ ] What does it mean to _think_ in react?
+
+Being able to think in terms of components and breaking down an app into a system of components.
+When we return what looks like HTML in a React component what we’re actually returning is a JavaScript object that describes the kind of HTML we want to make. A React component is just a regular JavaScript function. We use JSX for a couple of reasons. First, it’s easier to read. Second, it  allows us to put our application’s logic where it belongs: directly next to the thing the logic applies to.
+two major pillars of React’s design philosophy for now. 
+Separation of concerns and declarative programming.
+“the separation of concerns” refers to a design philosophy that each piece of your code should do one and only one thing.
+Declarative programming unlike imperative coding that uses step by step programming relies on a level of abstraction (making it program agnostic) to program what to do. In declarative coding  we are  describing WHAT we want to happen rather than HOW (we don’t know HOW map and reduce are implemented, we also probably don’t care). We’re not mutating any state. All of the mutations are abstracted inside of map and reduce.
+ 
+myArray.map(double)
+“Map over my array and double everything inside of it.”
+With practice declarative code is easier to parse. This is really important because, believe it or not, as a programmer, most of your time isn’t actually spent writing code. It’s spent reading other people’s code and trying to understand what it does. If you can grasp this distinction, and appreciate its value, congratulations. You now understand the basis of functional programming, the programming paradigm that React is modeled on.
+JSX is an XML/HTML-like syntax used by React that extends ECMAScript so that XML/HTML-like text can co-exist with JavaScript/React code. ... Unlike the past, instead of putting JavaScript into HTML, JSX allows us to put HTML into JavaScript.
+
 
 - [ ] Describe state.
 
+One of the single most important concepts in programming: state. React components has a built-in state object. The state object is where you store property values that belongs to the component. When the state object changes, the component re-renders. So the state determines how that component renders & behaves. This allows developers to create components that are dynamic and interactive.
+WC3 Schools Example:
+class Car extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {brand: "Ford"};
+  }
+  render() {
+    return (
+      <div>
+        <h1>My Car</h1>
+      </div>
+    );
+  }
+}
+
+
 - [ ] Describe props.
 
+In a React component, props are variables passed to a component by its parent component. State on the other hand is still variables, but directly initialized and managed by the component.
+We never make changes to props data - props are read only. This helps insure that our data flow remains clean and organized. This way when changes are made to our application we know where. And if something goes wrong, we can find the issue and fix it.
+
+
 - [ ] What are side effects, and how do you sync effects in a React component to state or prop changes?
+
+A side effect is anything that affects something outside the scope of the function being executed. Fetching data from an API, timers, logging, and manually manipulating the DOM are all examples of side effects. 
+A React component without side effects is called a pure component. A component can be considered pure if it renders the same output for the same state and props.
+A side effect is something that can cause a component to return a different output for the same state and props. React offers us tools for managing side effects so we can avoid bugs and inconsistencies in our app. The effect hook (useEffect()) is one of those.
+
+Using a dependency array as the second argument in the effect hook, we can tell it with which state or props the effect should be synced. This is a handy guide to use as you begin the build the mental model for this principle:
+… the question is “with which state and props does this effect synchronize with”
+
 
 ## Project Set Up
 
